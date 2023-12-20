@@ -29,6 +29,8 @@ const metadata: Metadata = {
 };
 
 
+
+
     rl.question("What do you want to call this token?: ", (name) => {
         rl.question("Please enter a 3-4 letter ticker symbol: ", (ticker) => {
           rl.question("Where did you post the JSON metadata file? (Paste url): ", (uri) => {
@@ -39,8 +41,8 @@ const metadata: Metadata = {
                 metadata.tokenSupply = supply;
             rl.close();
             console.log(metadata)
-            console.log(`\nSuccessfully minted ${metadata.tokenSupply} ${metadata.symbol}\nToken Address: ${mint.publicKey}`);
-            // createMyToken()
+            // console.log(`\nSuccessfully minted ${metadata.tokenSupply} ${metadata.symbol}\nToken Address: ${mint.publicKey}`);
+            createMyToken()
           });
         });
       });
@@ -68,7 +70,7 @@ async function createMyToken() {
         tokenOwner: umi.identity.publicKey,
         tokenStandard: TokenStandard.Fungible,
     }).sendAndConfirm(umi).then(() => {
-        console.log(`Successfully minted ${metadata.tokenSupply} ${metadata.symbol}, '\n' Token Address: ${mint.publicKey}`);
+        console.log(`\nSuccessfully minted ${metadata.tokenSupply} ${metadata.symbol}\nToken Address: ${mint.publicKey}\n`);
     })
 
 }
